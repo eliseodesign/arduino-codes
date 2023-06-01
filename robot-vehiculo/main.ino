@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>  // Libreria para comunicacion serial
 #include <Servo.h>           // Libreria para servomotor
-#include "utils.h"           // Libreria para servomotor
+#include "src/utils.h"           // Libreria para servomotor
 
 SoftwareSerial bluetooth(9, 10);  //(Tx(9),Rx(10)) para comunicacion serial
 Servo left;                        // Nombramos al servomotor izquierdo como "left"
