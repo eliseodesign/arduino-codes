@@ -1,4 +1,5 @@
 // utils.h
+#include <Arduino.h>
 
 #ifndef UTILS_H
 #define UTILS_H
@@ -13,6 +14,11 @@ int extraerGrados(String comando) {
   }
 
   return 0;  // Si no se pudo extraer los grados, retorna cero
+}
+
+String joinComando(String str1, String str2) {
+  String resultado = str1 + " " + str2;
+  return resultado;
 }
 
 #endif

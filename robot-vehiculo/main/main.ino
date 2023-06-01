@@ -1,6 +1,7 @@
 #include <SoftwareSerial.h>  // Libreria para comunicacion serial
 #include <Servo.h>           // Libreria para servomotor
 #include "src/utils.h"           // Libreria para servomotor
+#include "src/move.h"           // Libreria para servomotor
 
 SoftwareSerial bluetooth(9, 10);  //(Tx(9),Rx(10)) para comunicacion serial
 Servo left;                        // Nombramos al servomotor izquierdo como "left"
@@ -17,21 +18,18 @@ void setup() {
 
 void loop() {
   if (bluetooth.available()) {  // Si hay datos disponibles en el Bluetooth
-    String comando = bluetooth.readString();  // Lee el string enviado por Bluetooth
-
-    // Divide el string en dos partes para left y right
+    String input = bluetooth.readString();  // Lee el string enviado por Bluetooth
+   
+    String comando = ObtenerMovimiento(input);
     int separador = comando.indexOf(' ');
     if (separador != -1) {
-      String comando_left = comando.substring(0, separador);    // Obtiene la parte del comando para left
-      String comando_right = comando.substring(separador + 1);  // Obtiene la parte del comando para right
-
-      // Extrae los grados de los comandos para left y right
-      grados_left = extraerGrados(comando_left);
-      grados_right = extraerGrados(comando_right);
+      grados_left = extraerGrados( comando.substring(0, separador) );    // Obtiene la parte del comando para left
+      grados_left = extraerGrados( comando.substring(separador + 1) );  // Obtiene la parte del comando para right
 
       // Mueve los servomotores a las posiciones indicadas por grados_left y grados_right
       left.write(grados_left);
       right.write(grados_right);
     }
+    
   }
 }
