@@ -4,22 +4,32 @@
 #ifndef MOVE_H
 #define MOVE_H
 
-String ObtenerMovimiento(String input) {
-  String comando = "";  // Lee el string enviado por Bluetooth
+String joinComando(String str1, String str2) {
+  String resultado = str1 + " " + str2;
+  return resultado;
+}
 
-    String go = "i70f";
-    String back = "i170f";
-    if(input == "go"){
-      comando = joinComando(go,go);
-    }else if(comando == "back"){
-      comando = joinComando(back,back);
-    }else if(comando == "left"){
-      comando = joinComando(back,go);
-    }else if(comando == "right"){
-      comando = joinComando(go,back);
-    }
+String ObtenerMovimiento(String input) {
+  String comando = "";
+
+  String go = "i60f";
+  String back = "i160f";
+  if (input == "g") {
+    comando = joinComando(go, go);
+  }
+  if (input == "b") {
+    comando = joinComando(back, back);
+  }
+  if (input == "l") {
+    comando = joinComando(back, go);
+  }
+  if (input == "r") {
+    comando = joinComando(go, back);
+  }
 
   return comando;
 }
+
+
 
 #endif

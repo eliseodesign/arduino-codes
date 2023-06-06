@@ -10,7 +10,7 @@ int grados_left = 0;                // Iniciamos en cero los grados del servomot
 int grados_right = 0;               // Iniciamos en cero los grados del servomotor derecho
 
 void setup() {
-  Serial.begin(0);           // Habilitamos comunicacion serial
+  Serial.begin(9600);           // Habilitamos comunicacion serial
   bluetooth.begin(9600);        // Inicializamos la comunicacion con el HC-05
   left.attach(12);              // Pin de control para el servomotor izquierdo
   right.attach(11);             // Pin de control para el servomotor derecho
