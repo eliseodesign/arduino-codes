@@ -11,8 +11,8 @@ int servoStoppedCount = 0; // Contador de veces que se ha presionado '3'
 void setup() {
   Serial.begin(9600);
   bluetooth.begin(9600);
-  left.attach(12);
-  right.attach(11);
+
+
 }
 
 void loop() {
